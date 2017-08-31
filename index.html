@@ -267,6 +267,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/regularExp4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="左森君">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zuosamu的allBlue">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/30/regularExp4/" itemprop="url">正则,新手教学,立即上手(元字符)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T15:15:11+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/regular正则入门/" itemprop="url" rel="index">
+                    <span itemprop="name">regular正则入门</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="起词"><a href="#起词" class="headerlink" title="起词"></a>起词</h2><p>今天我们在要学习的是捕获符，捕获符是一个比较重要的，但是因为他比较复杂，所以我们放在量词的后面来学习。</p>
+<h2 id="捕获"><a href="#捕获" class="headerlink" title="捕获"></a>捕获</h2><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>(x):(引用MDN) ：匹配 ‘x’ 并且记住匹配项，就像下面的例子展示的那样。括号被称为 捕获括号。<br>                模式 /(foo) (bar) \1 \2/ 中的 ‘(foo)’ 和 ‘(bar)’ 匹配并记住字符串 “foo bar foo bar” 中前两个单词。模式中的 \1 和 \2 匹配字符串的后两个单词。注意 \1、\2、\n 是用在正则表达式的匹配环节。在正则表达式的替换环节，则要使用像 $1、$2、$n 这样的语法，例如，’bar foo’.replace( /(…) (…)/, ‘$2 $1’ )。</p>
+<p>(?:x):(引用MDN) : 匹配 ‘x’ 但是不记住匹配项。这种叫作非捕获括号，使得你能够定义为与正则                   表达式运算符一起使用的子表达式。来看示例表达式 /(?:foo){1,2}/。如果表                   达式是 /foo{1,2}/，{1,2}将只对 ‘foo’ 的最后一个字符 ’o‘ 生效。如果使                    用非捕获括号，则{1,2}会匹配整个 ‘foo’ 单词。</p>
+<p>x(?=y):(引用MDN) : 匹配’x’仅仅当’x’后面跟着’y’.这种叫做正向肯定查找。<br>                   例如，/Jack(?=Sprat)/会匹配到’Jack’仅仅当它后面跟着’Sprat’。/Jack(?=Sprat|Frost)/匹配‘Jack’仅仅当它后面跟着’Sprat’或者是‘Frost’。但是‘Sprat’和‘Frost’都不是匹配结果的一部分。</p>
+<p>x(?!y):(引用MDN) : 匹配’x’仅仅当’x’后面不跟着’y’,这个叫做正向否定查找。<br>                   例如，/\d+(?!.)/匹配一个数字仅仅当这个数字后面没有跟小数点的时候。正则表达式/\d+(?!.) /.exec(“3.141”)匹配‘141’但是不是‘3.141’</p>
+<p>x|y:(引用MDN) : 匹配‘x’或者‘y’。<br>                例如，/green|red/匹配“green apple”中的‘green’和“red apple”中的‘red’</p>
+<h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><p>当我们匹配：/(a)(b)\2\1/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-1.png"></p>
+<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><p>当我们匹配：/(?:ab){2}/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-2.png"><br>当我们匹配：/ab{2}/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-3.png"><br>发现两者的区别了吗？<br>(?:ab)是不是很像我们在超市买东西的时候，一件多西和另一件东西绑定出售。</p>
+<h4 id="例子3"><a href="#例子3" class="headerlink" title="例子3"></a>例子3</h4><p>当我们匹配: /ab(?=b)/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-4.png"></p>
+<h4 id="例子4"><a href="#例子4" class="headerlink" title="例子4"></a>例子4</h4><p>当我们匹配：/ab(?!b)/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-5.png"></p>
+<h4 id="例子5"><a href="#例子5" class="headerlink" title="例子5"></a>例子5</h4><h5 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h5><p>这个’|’也是一个比较重要的字符，它其实就是or(或者)，现在我们来匹配一个我们常见的0-24的正则。<br>当我们匹配：/^(\d|1\d|2[0-4])$/<br><img src="http://ov2t5xkda.bkt.clouddn.com/image/regex/regex-4-6.png"></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>正则学习到这里就告一段落了，感谢大家！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/regularExp3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -321,8 +474,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/regular正则教学/" itemprop="url" rel="index">
-                    <span itemprop="name">regular正则教学</span>
+                  <a href="/categories/regular正则入门/" itemprop="url" rel="index">
+                    <span itemprop="name">regular正则入门</span>
                   </a>
                 </span>
 
@@ -472,8 +625,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/regular正则教学/" itemprop="url" rel="index">
-                    <span itemprop="name">regular正则教学</span>
+                  <a href="/categories/regular正则入门/" itemprop="url" rel="index">
+                    <span itemprop="name">regular正则入门</span>
                   </a>
                 </span>
 
@@ -884,8 +1037,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/regular正则教学/" itemprop="url" rel="index">
-                    <span itemprop="name">regular正则教学</span>
+                  <a href="/categories/regular正则入门/" itemprop="url" rel="index">
+                    <span itemprop="name">regular正则入门</span>
                   </a>
                 </span>
 
@@ -1284,7 +1437,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
